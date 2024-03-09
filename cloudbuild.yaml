@@ -1,0 +1,33 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args:
+    - 'build'
+    - '-t'
+    - '$_REGISTRY/$PROJECT_ID/$_ARTIFACT_REGISTRY_REPO/$_IMAGE_NAME'
+    - '.'
+- name: 'gcr.io/cloud-builders/docker'
+  args:
+    - 'push'
+    - '$_REGISTRY/$PROJECT_ID/$_ARTIFACT_REGISTRY_REPO/$_IMAGE_NAME'
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: gcloud
+  args: 
+    - 'run'
+    - 'deploy'
+    - '$_CLOUD_RUN_SERVICE'
+    - '--image'
+    - '$_REGISTRY/$PROJECT_ID/$_ARTIFACT_REGISTRY_REPO/$_IMAGE_NAME'
+    - '--region'
+    - 'europe-west1'
+options:
+  automapSubstitutions: true
+substitutions:
+  _IMAGE_NAME: 'benjaminmortimer-co-uk'
+  _REGISTRY: 'europe-west1-docker.pkg.dev' 
+  _ARTIFACT_REGISTRY_REPO: "cloud-run-source-deploy"
+  _CLOUD_RUN_SERVICE: 'benjaminmortimer-co-uk' 
+
+#images:
+#- 'europe-west1-docker.pkg.dev/benjaminmortimer-co-uk/cloud-build-test/test-image'
+
+# Copied, with some changes, from https://cloud.google.com/build/docs/deploying-builds/deploy-cloud-run
