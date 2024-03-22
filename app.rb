@@ -18,3 +18,8 @@ get '/posts/:post_path' do
     error 404
   end
 end
+
+error 404 do
+  erb :'errors/404'
+end
+  
