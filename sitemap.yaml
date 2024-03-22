@@ -1,0 +1,6 @@
+# Posts are keyed by URL path
+# There must be a markdown file with the name '#{path}.md'
+
+a-post:
+  title: A post
+  published_at: 21 March 2024
