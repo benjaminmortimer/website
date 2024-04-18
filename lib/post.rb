@@ -22,7 +22,7 @@ class Post
 	end
 
 	def content
-		Kramdown::Document.new(File.read(@markdown_filepath)).to_html
+		File.read(@markdown_filepath)
 	end
 
 end
