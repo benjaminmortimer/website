@@ -1,4 +1,3 @@
-require 'kramdown'
 require 'yaml'
 
 class Post
