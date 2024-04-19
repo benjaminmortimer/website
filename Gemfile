@@ -5,3 +5,4 @@ gem "thin", "~> 1.6"
 
 gem "rackup", "~> 2.1"
 
+gem "kramdown", "~> 2.4"
