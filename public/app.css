@@ -6,3 +6,15 @@ body {
 h1 {
 	color: blue;
 }
+
+@media (min-width: 500px) {
+	body {
+		margin: 50px;
+	}
+}
+
+@media (min-width: 900px) {
+	body {
+		margin: 100px 300px;
+	}
+}
